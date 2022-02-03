@@ -246,7 +246,11 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             // TODO: Might want to initialize to at least the window resolution to avoid un-necessary re-alloc in the player
             RTHandles.Initialize(1, 1, m_Asset.currentPlatformRenderPipelineSettings.supportMSAA, m_Asset.currentPlatformRenderPipelineSettings.msaaSampleCount);
 
+#if LOOKING_GLASS
             m_XRSystem = new XRSystem(asset.renderPipelineResources.shaders.LookingGlassPS);
+#else
+            m_XRSystem = new XRSystem();
+#endif
             m_GPUCopy = new GPUCopy(asset.renderPipelineResources.shaders.copyChannelCS);
 
             m_MipGenerator = new MipGenerator(m_Asset);
@@ -1954,10 +1958,12 @@ namespace UnityEngine.Experimental.Rendering.HDPipeline
             // XR mirror view and blit do device
             hdCamera.xr.EndCamera(cmd, hdCamera, renderContext);
 
+#if LOOKING_GLASS
             bool useLookingGlass = hdCamera.camera.GetComponent<LookingGlass.Holoplay>() != null;
             if (useLookingGlass)
                 m_XRSystem.RenderLookingGlass(cmd, hdCamera, m_IntermediateAfterPostProcessBuffer);
             else
+#endif
 
             // In developer build, we always render post process in m_AfterPostProcessBuffer at (0,0) in which we will then render debug.
             // Because of this, we need another blit here to the final render target at the right viewport.

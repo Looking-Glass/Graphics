@@ -1,0 +1,16 @@
+{
+    "name": "LookingGlass.Editor",
+    "references": [
+        "GUID:eaa04f0e3e6374045ae37554edb2b888"
+    ],
+    "includePlatforms": [
+        "Editor"
+    ],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
+    "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": []
+}

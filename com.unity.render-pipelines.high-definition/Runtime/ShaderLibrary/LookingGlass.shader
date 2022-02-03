@@ -48,7 +48,8 @@ Shader "Hidden/HDRP/LookingGlass"
 				// make sure it's positive and between 0-1
 				viewLerp = 1.0 - fmod(viewLerp + ceil(abs(viewLerp)), 1.0);
 				// translate to quilt coordinates
-				float view = floor(viewLerp * tile.z); // multiply by total views
+                float view = floor(viewLerp * tile.z); // multiply by total views
+                //float view = floor(viewLerp * 8); // multiply by total views
 				//col[subpixel] = UNITY_SAMPLE_TEX2DARRAY(_MainTex, float3(i.uv.xy, view))[subpixel];
 				//col[subpixel] = textureName.Sample(_MainTex, float3(viewUV, subpixel));
 
