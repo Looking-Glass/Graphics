@@ -218,7 +218,7 @@ namespace UnityEngine.Experimental.Rendering
         }
 
         // XRTODO : expose as public API
-        static void SetLayoutOverride(Action<XRLayout, Camera> action)
+        public static void SetLayoutOverride(Action<XRLayout, Camera> action)
         {
             s_LayoutOverride = action;
         }
@@ -261,7 +261,7 @@ namespace UnityEngine.Experimental.Rendering
         }
 
         // Setup the layout to use multi-pass or single-pass based on the runtime caps
-        internal static void CreateDefaultLayout(Camera camera)
+        public static void CreateDefaultLayout(Camera camera)
         {
 #if ENABLE_VR && ENABLE_XR_MODULE
             if (s_Display == null)
